@@ -1,28 +1,47 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div>
+      <div class="wrapper-image">
+        <pic-zoom :size="size" :src="bg"/>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import picZoom from './components/picture-zoom'
+import Bg from './assets/background.jpg'
 
 export default {
   name: 'App',
+  data () {
+    return {
+      bg: Bg,
+      size: {
+        width: '200',
+        height: '200'
+      }
+    }
+  },
   components: {
-    HelloWorld
+    picZoom
   }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    .wrapper-image {
+      width: 400px !important;
+      height: 400px !important;
+
+      border: 1px solid #ececec;
+      border-radius: 4px;
+      img {
+        object-fit: contain; // CSS图片保持原比例
+      }
+    }
+    * {
+      margin: 0;
+      padding: 0;
+    }
 </style>
